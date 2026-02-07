@@ -4,270 +4,436 @@
   <meta charset="UTF-8" />
   <title>Neuverk Innovations</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="When AI automation touches support. Neuverk Innovations." />
+  <meta name="description" content="When AI automation touches support." />
 
   <style>
     :root{
-      --bg:#0b0f1a;
-      --panel:#121a2c;
-      --line:#1c2133;
-      --text:#ffffff;
-      --muted:#aeb4c3;
-      --muted2:#8c93a8;
-      --accent:#7aa2ff;
+      --bg:#ffffff;
+      --bg2:#f5f7fb;
+      --text:#0b1220;
+      --muted:#4b5565;
+      --muted2:#6b7280;
+      --line:#e6e8ee;
+      --accent:#0a66ff;
+      --accent2:#0ea5e9;
+      --shadow:0 10px 30px rgba(16,24,40,.08);
+      --radius:18px;
     }
 
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-      background:
-        radial-gradient(900px 500px at 50% -10%, #14245a 0%, var(--bg) 60%),
-        var(--bg);
       color:var(--text);
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
     }
 
     a{color:var(--accent); text-decoration:none}
     a:hover{text-decoration:underline}
 
-    .wrap{max-width:1100px; margin:0 auto; padding:0 20px;}
+    .wrap{
+      max-width:1180px;
+      margin:0 auto;
+      padding:0 22px;
+    }
 
-    .top{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:22px 0;
+    /* Top Nav (Microsoft-ish) */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(255,255,255,.88);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:18px;
     }
     .brand{
-      display:flex; align-items:center; gap:12px;
-      font-weight:700; letter-spacing:.3px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:240px;
     }
-    .brand img{height:34px; display:block;}
-
-    header{
-      padding:110px 0 90px;
-      text-align:center;
-    }
-    .hero-logo{
-      height:84px;
-      margin:0 auto 26px;
+    .brand img{
+      height:44px; /* bigger logo */
+      width:auto;
       display:block;
     }
-    h1{
-      font-size:52px;
-      line-height:1.1;
-      margin:0 0 22px;
-      letter-spacing:-0.8px;
+    .brand .name{
+      font-weight:650;
+      letter-spacing:.2px;
     }
-    .hero-text{
-      max-width:820px;
-      margin:0 auto;
-      font-size:20px;
-      line-height:1.7;
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      font-size:14px;
       color:var(--muted);
     }
-    .highlight{color:#fff;}
+    .nav a{color:var(--muted)}
+    .nav a:hover{color:var(--text); text-decoration:none}
 
-    .signals{
-      display:flex; justify-content:center; flex-wrap:wrap;
-      gap:14px; margin-top:36px;
-    }
-    .signal{
-      padding:10px 16px;
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
       border-radius:999px;
-      background:rgba(18,26,44,.6);
-      border:1px solid var(--line);
+      background:var(--accent);
+      color:#fff;
+      font-weight:650;
+      border:0;
+      box-shadow:0 8px 22px rgba(10,102,255,.22);
+      white-space:nowrap;
+    }
+    .cta-btn:hover{filter:brightness(1.02); text-decoration:none}
+
+    /* Hero */
+    header{
+      padding:64px 0 46px;
+      background:
+        radial-gradient(900px 420px at 75% 10%, rgba(10,102,255,.12), transparent 60%),
+        radial-gradient(900px 420px at 25% 0%, rgba(14,165,233,.10), transparent 60%);
+      border-bottom:1px solid var(--line);
+    }
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
       font-size:13px;
-      color:#d6dbec;
-      letter-spacing:.3px;
+      color:var(--muted2);
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:999px;
+      padding:8px 12px;
+      width:fit-content;
+      box-shadow: 0 8px 18px rgba(16,24,40,.04);
+      margin-bottom:16px;
+    }
+    .dot{
+      height:8px; width:8px; border-radius:99px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      display:inline-block;
     }
 
+    h1{
+      margin:0 0 14px;
+      font-size:52px;
+      line-height:1.08;
+      letter-spacing:-0.9px;
+    }
+    .hero-text{
+      margin:0 0 22px;
+      font-size:18px;
+      line-height:1.7;
+      color:var(--muted);
+      max-width:640px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:12px;
+      font-weight:650;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+    }
+    .btn.primary{
+      background:var(--accent);
+      color:#fff;
+      border-color:transparent;
+      box-shadow:0 10px 24px rgba(10,102,255,.22);
+    }
+    .btn.primary:hover{filter:brightness(1.02); text-decoration:none}
+    .btn.secondary:hover{box-shadow:0 10px 22px rgba(16,24,40,.06); text-decoration:none}
+
+    /* Right hero visual */
+    .hero-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    .hero-card .mini-title{
+      font-weight:650;
+      margin:0 0 10px;
+    }
+    .hero-card .mini-text{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+    .chip{
+      font-size:12px;
+      color:#1f2937;
+      background: #f3f6ff;
+      border:1px solid #e5ecff;
+      padding:8px 10px;
+      border-radius:999px;
+    }
+
+    /* Section */
     section{
-      border-top:1px solid var(--line);
-      padding:80px 0;
+      padding:54px 0;
+    }
+    .section-title{
+      font-size:24px;
+      margin:0 0 10px;
+      letter-spacing:-0.3px;
+    }
+    .section-lead{
+      margin:0 0 22px;
+      color:var(--muted);
+      line-height:1.7;
+      max-width:820px;
+      font-size:16px;
     }
 
+    /* Cards */
     .grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:18px;
     }
     .card{
-      background:rgba(18,26,44,.65);
+      background:#fff;
       border:1px solid var(--line);
-      border-radius:18px;
-      padding:26px;
-      box-shadow:0 10px 30px rgba(0,0,0,.25);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
     }
     .card h3{
-      margin:0 0 14px;
-      font-size:18px;
-      letter-spacing:.2px;
+      margin:0 0 10px;
+      font-size:16px;
+      letter-spacing:-0.2px;
     }
     .card p{
       margin:0;
-      font-size:15px;
-      line-height:1.8;
-      color:#d2d7e3;
-    }
-
-    .statement{
-      text-align:center;
-      max-width:900px;
-      margin:0 auto;
-      font-size:26px;
-      line-height:1.5;
-      letter-spacing:-0.3px;
-      color:#e7ebf7;
-    }
-
-    .contact{
-      text-align:center;
-      max-width:900px;
-      margin:0 auto;
-    }
-    .contact p{
       color:var(--muted);
-      font-size:16px;
-      margin:0 0 18px;
-      line-height:1.7;
+      line-height:1.75;
+      font-size:14px;
+    }
+
+    /* Big quote */
+    .quote{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:26px;
+      font-size:22px;
+      line-height:1.55;
+      letter-spacing:-0.3px;
+      color:#0b1220;
+    }
+    .quote small{
+      display:block;
+      margin-top:10px;
+      font-size:13px;
+      color:var(--muted2);
+      letter-spacing:0;
+    }
+
+    /* Contact */
+    .contact{
+      background: linear-gradient(180deg, rgba(10,102,255,.07), rgba(255,255,255,0));
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
     }
     .contact-grid{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin-top:24px;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+      margin-top:20px;
     }
     .contact-box{
-      background:rgba(18,26,44,.65);
+      background:#fff;
       border:1px solid var(--line);
-      border-radius:18px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       padding:18px;
-      text-align:left;
     }
-    .contact-box .label{
+    .label{
       font-size:12px;
-      letter-spacing:.35px;
-      text-transform:uppercase;
       color:var(--muted2);
+      letter-spacing:.32px;
+      text-transform:uppercase;
       margin-bottom:8px;
     }
     .contact-box a{
-      display:inline-block;
+      font-weight:700;
       font-size:16px;
-      font-weight:650;
+      display:inline-block;
       margin-bottom:6px;
     }
-    .contact-box .hint{
+    .hint{
+      color:var(--muted);
       font-size:13px;
-      color:#cdd3e4;
       line-height:1.6;
     }
 
     footer{
-      border-top:1px solid var(--line);
-      padding:28px 0;
-      font-size:13px;
+      padding:26px 0;
       color:var(--muted2);
+      font-size:13px;
     }
     .foot{
       display:flex;
+      align-items:center;
       justify-content:space-between;
       flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
+      gap:12px;
     }
 
-    @media(max-width:900px){
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr}
       h1{font-size:40px}
       .grid{grid-template-columns:1fr}
       .contact-grid{grid-template-columns:1fr}
-      .statement{font-size:22px}
+      .brand{min-width:unset}
     }
   </style>
 </head>
 
 <body>
 
-  <div class="wrap top">
-    <div class="brand">
-      <img src="logo.png" alt="Neuverk" onerror="this.style.display='none'">
-      <span>Neuverk Innovations</span>
+  <!-- Top Navigation -->
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <img src="logo.png" alt="Neuverk" onerror="this.style.display='none'">
+        <div class="name">Neuverk Innovations</div>
+      </div>
+
+      <div class="nav">
+        <a href="#vision">Vision</a>
+        <a href="#principles">Principles</a>
+        <a href="#contact">Contact</a>
+        <a class="cta-btn" href="mailto:hello@neuverk.com">Talk to us</a>
+      </div>
     </div>
   </div>
 
-  <!-- HERO -->
-  <header class="wrap">
-    <img class="hero-logo" src="logo.png" alt="Neuverk" onerror="this.style.display='none'">
+  <!-- Hero -->
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="kicker"><span class="dot"></span> Building quietly — early stage</div>
 
-    <h1>
-      When <span class="highlight">AI automation</span><br>
-      touches <span class="highlight">support</span>
-    </h1>
+        <h1>When AI automation<br>touches support</h1>
 
-    <p class="hero-text">
-      We’re building toward a world where support feels instant, calm, and intelligent —
-      where the obvious gets handled quietly, and humans step in only when it truly matters.
-    </p>
+        <p class="hero-text">
+          Neuverk explores a calmer future for IT support — where routine friction fades,
+          intelligence moves closer to the edge, and systems act with restraint and oversight.
+        </p>
 
-    <div class="signals">
-      <div class="signal">Autonomy</div>
-      <div class="signal">Intelligence</div>
-      <div class="signal">Control</div>
-      <div class="signal">EU-first mindset</div>
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Contact</a>
+          <a class="btn secondary" href="mailto:invest@neuverk.com">Investor intro</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <p class="mini-title">A modern approach</p>
+        <p class="mini-text">
+          We’re working on an automation layer that feels natural — not noisy.
+          Designed for trust, control, and real-world environments.
+        </p>
+        <div class="chips">
+          <div class="chip">EU-first mindset</div>
+          <div class="chip">Human oversight</div>
+          <div class="chip">Policy boundaries</div>
+          <div class="chip">Secure by design</div>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- PHILOSOPHY -->
-  <section>
-    <div class="wrap grid">
-      <div class="card">
-        <h3>Less noise</h3>
-        <p>
-          The best support is not the loudest. It’s the one you barely notice —
-          smooth, proactive, and consistent.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>More intelligence</h3>
-        <p>
-          Automation with context. Systems that understand intent, learn patterns,
-          and act responsibly — not blindly.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Designed with restraint</h3>
-        <p>
-          Boundaries matter. Policies matter. Oversight matters.
-          Trust is built through control, not promises.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATEMENT -->
-  <section>
+  <!-- Principles -->
+  <section id="principles">
     <div class="wrap">
-      <div class="statement">
-        Support shouldn’t feel like a queue.
-        It should feel like the system already knows what you need.
+      <h2 class="section-title">Principles</h2>
+      <p class="section-lead">
+        We’re building with focus — keeping the messaging simple and the execution sharp.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Calm by default</h3>
+          <p>Support should feel quiet and instant — with less back-and-forth.</p>
+        </div>
+        <div class="card">
+          <h3>Intelligence with context</h3>
+          <p>Automation should understand the situation, not just run scripts.</p>
+        </div>
+        <div class="card">
+          <h3>Control creates trust</h3>
+          <p>Boundaries, approvals, and visibility aren’t extras — they’re the product.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section>
-    <div class="wrap contact">
-      <p>
-        We’re currently in development. If you’re interested in early collaboration, pilot discussions,
-        partnerships, or investor conversations — feel free to reach out.
+  <!-- Vision -->
+  <section id="vision">
+    <div class="wrap">
+      <h2 class="section-title">Vision</h2>
+      <p class="section-lead">
+        A future where the system handles the obvious — and respectfully asks for help when it’s not.
+      </p>
+
+      <div class="quote">
+        “Support shouldn’t feel like a queue. It should feel like the system already knows what you need.”
+        <small>Neuverk Innovations · Munich, Germany · Project in development (not yet incorporated)</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-lead">
+        Interested in early collaboration, pilots, partnerships, or investor conversations? Reach out.
       </p>
 
       <div class="contact-grid">
         <div class="contact-box">
           <div class="label">Investors / Funding</div>
           <a href="mailto:invest@neuverk.com">invest@neuverk.com</a>
-          <div class="hint">Intro, deck requests, funding discussions.</div>
+          <div class="hint">Introductions, deck requests, funding discussions.</div>
         </div>
 
         <div class="contact-box">
@@ -288,14 +454,10 @@
           <div class="hint">Anything else — we’ll route it internally.</div>
         </div>
       </div>
-
-      <p style="margin-top:22px;font-size:14px;color:#8c93a8">
-        Munich, Germany · Project in development (not yet incorporated)
-      </p>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
     <div class="wrap foot">
       <div>© 2026 Neuverk Innovations</div>
