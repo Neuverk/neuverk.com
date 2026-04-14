@@ -4,15 +4,27 @@ export default function CookiePolicyPage() {
       <div className="section-head">
         <span className="section-kicker">Legal</span>
         <h1>Cookie Policy</h1>
-        <p>
-          This page is reserved for information about cookies and related technologies.
-        </p>
+        <p>Information about cookies and related technologies</p>
       </div>
 
       <div className="card">
         <p>
-          A detailed cookie policy and consent setup can be added once analytics,
-          embeds, or tracking tools are finalized.
+          Neuverk currently does not use non-essential cookies, tracking pixels,
+          or third-party analytics cookies on this website.
+        </p>
+
+        <br />
+
+        <p>
+          Technical cookies required for website functionality may be used by
+          the hosting platform where necessary.
+        </p>
+
+        <br />
+
+        <p>
+          If analytics or additional services are introduced in the future, this
+          policy and a consent banner will be updated accordingly.
         </p>
       </div>
     </div>
